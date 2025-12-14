@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Rendzu — Help & documentation. Five-in-a-Row on a 40×40 board with a minimax-family AI." />
+  <meta name="theme-color" content="#0b1220" />
+  <title>Rendzu — Help (40×40 • Minimax-family AI)</title>
+
+  <style>
+    :root{
+      --bg: #0b1220;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.08);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --muted2: rgba(255,255,255,.55);
+      --border: rgba(255,255,255,.14);
+      --shadow: 0 18px 55px rgba(0,0,0,.45);
+      --accent: #7dd3fc;
+      --accent2:#a7f3d0;
+      --radius: 18px;
+      --radius2: 26px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      --maxw: 1100px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#f6f7fb;
+        --panel: rgba(0,0,0,.045);
+        --panel2: rgba(0,0,0,.065);
+        --text: rgba(10,10,10,.92);
+        --muted: rgba(10,10,10,.70);
+        --muted2: rgba(10,10,10,.55);
+        --border: rgba(10,10,10,.14);
+        --shadow: 0 18px 55px rgba(0,0,0,.14);
+        --accent:#0284c7;
+        --accent2:#059669;
+      }
+    }
+    @media (prefers-reduced-motion: reduce){
+      *{ scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(125,211,252,.25), transparent 55%),
+        radial-gradient(900px 500px at 90% 10%, rgba(167,243,208,.18), transparent 55%),
+        radial-gradient(900px 500px at 50% 120%, rgba(251,191,36,.10), transparent 55%),
+        var(--bg);
+      line-height:1.55;
+    }
+    a{ color: var(--accent); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    .wrap{ max-width: var(--maxw); margin: 28px auto; padding: 0 16px; }
+
+    header.hero{
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, var(--panel2), var(--panel));
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      padding: 22px 22px 18px;
+      overflow:hidden;
+      position: relative;
+    }
+    header.hero::after{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(800px 280px at 30% 0%, rgba(125,211,252,.22), transparent 55%),
+                  radial-gradient(700px 240px at 75% 10%, rgba(167,243,208,.14), transparent 55%);
+      pointer-events:none;
+      opacity:.9;
+    }
+    header.hero > *{ position:relative; }
+
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 6px 10px;
+      border:1px solid var(--border);
+      background: rgba(0,0,0,.08);
+      border-radius: 999px;
+      font-size: 12px;
+      color: var(--muted);
+      margin-right: 8px;
+    }
+    .dot{ width:8px; height:8px; border-radius:99px; background: var(--accent); box-shadow: 0 0 0 6px rgba(125,211,252,.12); }
+
+    h1{ margin: 8px 0 0; font-size: clamp(28px, 3.2vw, 40px); }
+    .subtitle{ margin: 10px 0 0; color: var(--muted); max-width: 85ch; }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 290px 1fr;
+      gap: 16px;
+      margin-top: 16px;
+      align-items:start;
+    }
+    @media (max-width: 920px){
+      .grid{ grid-template-columns: 1fr; }
+      nav.toc{ position: static !important; }
+    }
+
+    nav.toc{
+      position: sticky; top: 16px;
+      border:1px solid var(--border);
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 14px 14px 10px;
+      box-shadow: 0 10px 35px rgba(0,0,0,.20);
+    }
+    nav.toc h2{
+      font-size: 13px;
+      margin: 0 0 8px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted2);
+    }
+    nav.toc a{
+      display:flex; gap:10px; align-items:baseline;
+      padding: 8px 10px;
+      border-radius: 12px;
+      color: var(--text);
+    }
+    nav.toc a:hover{ background: rgba(255,255,255,.04); text-decoration:none; }
+    .sec-num{ font-family: var(--mono); font-size: 12px; color: var(--muted2); min-width: 28px; }
+
+    section.card{
+      border:1px solid var(--border);
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 18px 18px 16px;
+      box-shadow: 0 10px 35px rgba(0,0,0,.18);
+      margin-bottom: 16px;
+    }
+    section.card h2{ margin: 0 0 10px; font-size: 18px; display:flex; gap:10px; align-items:baseline; }
+    .tag{
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted2);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.03);
+    }
+
+    .two{ display:grid; grid-template-columns: 1.1fr .9fr; gap: 14px; align-items:start; }
+    @media (max-width: 920px){ .two{ grid-template-columns: 1fr; } }
+
+    figure{
+      margin:0;
+      border:1px solid var(--border);
+      border-radius: 16px;
+      overflow:hidden;
+      background: rgba(255,255,255,.03);
+    }
+    figure img{ display:block; width:100%; height:auto; }
+    figcaption{
+      padding: 10px 12px;
+      font-size: 13px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    table{
+      width:100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      overflow:hidden;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+    }
+    th, td{ text-align:left; padding: 10px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    th{ font-size: 13px; color: var(--muted2); background: rgba(255,255,255,.03); }
+    tr:last-child td{ border-bottom:none; }
+
+    .icon{
+      width: 22px; height:22px;
+      object-fit: cover;
+      border-radius: 6px;
+      border:1px solid var(--border);
+      vertical-align: -5px;
+      margin-right: 8px;
+      background: rgba(255,255,255,.06);
+    }
+    .callout{
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent2);
+      background: rgba(167,243,208,.08);
+      padding: 12px 12px;
+      border-radius: 14px;
+      margin: 12px 0 0;
+      color: var(--muted);
+    }
+    .callout strong{ color: var(--text); }
+
+    .kbd{
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    footer{ margin-top: 18px; text-align:center; color: var(--muted2); font-size: 12px; padding: 14px 0 22px; }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div>
+        <span class="badge"><span class="dot"></span> Help / Documentation</span>
+        <span class="badge">Board: <strong>40×40</strong></span>
+        <span class="badge">AI: <strong>Minimax-family</strong></span>
+      </div>
+
+      <h1>Rendzu — Five-in-a-Row</h1>
+      <p class="subtitle">
+        Players alternate placing stones. The first to build an unbroken line of <strong>five</strong> wins
+        (horizontal, vertical, or diagonal). This version uses a <strong>40×40</strong> board.
+      </p>
+    </header>
+
+    <div class="grid">
+      <nav class="toc" aria-label="Table of contents">
+        <h2>Contents</h2>
+        <a href="#overview"><span class="sec-num">01</span><span>Overview</span></a>
+        <a href="#rules"><span class="sec-num">02</span><span>Game Rules</span></a>
+        <a href="#play"><span class="sec-num">03</span><span>Playing a Game</span></a>
+        <a href="#controls"><span class="sec-num">04</span><span>Buttons & Menu</span></a>
+        <a href="#examples"><span class="sec-num">05</span><span>Example Positions</span></a>
+        <a href="#ai"><span class="sec-num">06</span><span>AI (high level)</span></a>
+      </nav>
+
+      <main>
+        <section id="overview" class="card">
+          <h2><span class="tag">01</span> Overview</h2>
+          <div class="two">
+            <div>
+              <p>
+                Rendzu is a classic <strong>Five-in-a-Row</strong> logic game.
+                Simple rules, deep tactics — especially on a large board.
+              </p>
+              <div class="callout">
+                <strong>40×40 note:</strong> a large board makes brute force unrealistic.
+                The computer opponent is designed to stay responsive by narrowing candidate moves and using time-budget cutoffs.
+              </div>
+              <p style="margin-top:12px; color: rgba(255,255,255,.70);">
+                Tip: use replay navigation after a game to review decisions.
+              </p>
+            </div>
+
+          
+          </div>
+        </section>
+
+        <section id="rules" class="card">
+          <h2><span class="tag">02</span> Game Rules</h2>
+          <ol>
+            <li><strong>Red</strong> always plays first.</li>
+            <li>Each turn: place one stone on an empty cell/intersection.</li>
+            <li>First to make <strong>five in a row</strong> wins (H/V/diagonal).</li>
+            <li>If no one makes five and the board fills: draw.</li>
+          </ol>
+        </section>
+
+        <section id="play" class="card">
+          <h2><span class="tag">03</span> Playing a Game</h2>
+          <ul>
+            <li>Start: <span class="kbd">New Game</span></li>
+            <li>Set AI strength: <span class="kbd">Level</span></li>
+            <li>Save / Load games anytime</li>
+            <li>After the game: review with <span class="kbd">Previous</span>, <span class="kbd">Next</span>, <span class="kbd">Last Position</span></li>
+          </ul>
+        </section>
+
+        <section id="controls" class="card">
+          <h2><span class="tag">04</span> Buttons &amp; Menu Commands</h2>
+          <figure style="margin-top:12px;">
+            <img src="img/menu.png" alt="Menu screenshot" loading="lazy" />
+            <figcaption>Menu example. (File: <span class="kbd">img/menu.png</span>)</figcaption>
+          </figure>
+
+          <table aria-label="Main buttons" style="margin-top: 14px;">
+            <thead>
+              <tr>
+                <th style="width: 240px;">Button</th>
+                <th>What it does</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><img class="icon" src="img/new.jpg" alt="New Game">New Game</td><td>Starts a new game (Red begins).</td></tr>
+              <tr><td><img class="icon" src="img/save.jpg" alt="Save Game">Save Game</td><td>Saves the current game.</td></tr>
+              <tr><td><img class="icon" src="img/load.jpg" alt="Load Game">Load Game</td><td>Loads a saved game.</td></tr>
+              <tr><td><img class="icon" src="img/level.jpg" alt="Level">Level</td><td>Sets difficulty / AI strength.</td></tr>
+              <tr><td><img class="icon" src="img/machine.jpg" alt="Computer">Computer</td><td>Lets the computer make a move (analysis/demo).</td></tr>
+              <tr><td><img class="icon" src="img/edit.jpg" alt="Edit">Edit</td><td>Edit a position (set up scenarios).</td></tr>
+              <tr><td><img class="icon" src="img/Show.jpg" alt="Show">Show</td><td>Show game record / moves (if available).</td></tr>
+              <tr><td><img class="icon" src="img/Prev.jpg" alt="Previous">Previous</td><td>Step back in replay.</td></tr>
+              <tr><td><img class="icon" src="img/Next.jpg" alt="Next">Next</td><td>Step forward in replay.</td></tr>
+              <tr><td><img class="icon" src="img/last.jpg" alt="Last position">Last Position</td><td>Jump to the last position.</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="examples" class="card">
+          <h2><span class="tag">05</span> Example Positions</h2>
+          <div class="two" style="margin-top: 12px;">
+            <figure>
+              <img src="img/red_win.png" alt="Red wins example" loading="lazy" />
+              <figcaption><strong>Red wins:</strong> the player builds a line of five.</figcaption>
+            </figure>
+            <figure>
+              <img src="img/blue_win.png" alt="Blue wins example" loading="lazy" />
+              <figcaption><strong>Blue wins:</strong> the computer builds a line of five.</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section id="ai" class="card">
+          <h2><span class="tag">06</span> AI (high level)</h2>
+          <p>
+            The computer opponent uses a minimax-family idea: limited-depth lookahead + evaluation at leaf nodes.
+            On a 40×40 board, the key is restricting move candidates and enforcing time limits to remain responsive.
+          </p>
+          <div class="callout">
+            <strong>In practice:</strong> consider only meaningful candidates near existing stones, weight them by heuristics,
+            keep top-N, stop on time budget, and play the best move found so far.
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer>
+      Rendzu — Help page • Five-in-a-Row • 40×40 board
+    </footer>
+  </div>
+</body>
+</html>

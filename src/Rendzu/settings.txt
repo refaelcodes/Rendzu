@@ -1,0 +1,1 @@
+/nologo /MTd /w /W0 /O1 /D "_DEBUG" /Fp"Debug/Game.pch" /Yu"stdafx.h" /Fo"Debug/" /c 

@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Rendzu — Five-in-a-Row on a 40×40 board with minimax-family AI. Portfolio case study." />
+  <meta name="theme-color" content="#0b1220" />
+  <title>Rendzu — 40×40 Five-in-a-Row • Minimax-family AI (Portfolio)</title>
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.09);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --muted2: rgba(255,255,255,.56);
+      --border: rgba(255,255,255,.14);
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --accent:#7dd3fc;
+      --accent2:#a7f3d0;
+      --radius: 18px;
+      --radius2: 26px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      --maxw: 1120px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#f6f7fb;
+        --panel: rgba(0,0,0,.045);
+        --panel2: rgba(0,0,0,.065);
+        --text: rgba(10,10,10,.92);
+        --muted: rgba(10,10,10,.70);
+        --muted2: rgba(10,10,10,.55);
+        --border: rgba(10,10,10,.14);
+        --shadow: 0 18px 55px rgba(0,0,0,.14);
+        --accent:#0284c7;
+        --accent2:#059669;
+      }
+    }
+    @media (prefers-reduced-motion: reduce){
+      *{ scroll-behavior:auto !important; transition:none !important; animation:none !important; }
+    }
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color: var(--text);
+      background:
+        radial-gradient(1200px 650px at 10% -10%, rgba(125,211,252,.25), transparent 55%),
+        radial-gradient(900px 520px at 90% 10%, rgba(167,243,208,.18), transparent 55%),
+        radial-gradient(900px 520px at 50% 120%, rgba(251,191,36,.10), transparent 55%),
+        var(--bg);
+      line-height:1.55;
+    }
+    a{ color: var(--accent); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    .wrap{ max-width: var(--maxw); margin: 28px auto; padding: 0 16px; }
+
+    .hero{
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, var(--panel2), var(--panel));
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      padding: 22px;
+      overflow:hidden;
+      position:relative;
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(900px 300px at 25% 0%, rgba(125,211,252,.20), transparent 55%),
+                  radial-gradient(800px 260px at 75% 10%, rgba(167,243,208,.14), transparent 55%);
+      pointer-events:none;
+    }
+    .hero > *{ position:relative; }
+
+    .topbar{ display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+    .brand{
+      display:flex; gap:10px; align-items:center;
+      padding: 8px 10px;
+      border:1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .dot{ width:9px; height:9px; border-radius:99px; background: var(--accent); box-shadow: 0 0 0 6px rgba(125,211,252,.12); }
+
+    .cta{ display:flex; gap:10px; flex-wrap:wrap; }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      font-weight: 650;
+      font-size: 14px;
+      text-decoration:none;
+    }
+    .btn:hover{ background: rgba(255,255,255,.06); text-decoration:none; }
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(125,211,252,.22), rgba(255,255,255,.03));
+      border-color: rgba(125,211,252,.35);
+    }
+
+    h1{ margin: 14px 0 0; font-size: clamp(28px, 3.2vw, 44px); letter-spacing: .2px; }
+    .subtitle{ margin: 10px 0 0; color: var(--muted); max-width: 85ch; font-size: 16px; }
+
+    .pills{ display:flex; flex-wrap:wrap; gap:10px; margin-top: 14px; }
+    .pill{
+      padding: 7px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .pill strong{ color: var(--text); }
+
+    .grid{ display:grid; grid-template-columns: 1fr; gap: 16px; margin-top: 16px; }
+    @media (min-width: 980px){
+      .grid{ grid-template-columns: 1.05fr .95fr; }
+    }
+
+    .card{
+      border:1px solid var(--border);
+      background: var(--panel);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 35px rgba(0,0,0,.18);
+      padding: 18px;
+      min-width:0;
+    }
+    .card h2{ margin:0 0 10px; font-size: 18px; display:flex; align-items:baseline; gap:10px; }
+    .tag{
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted2);
+      border:1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.03);
+    }
+    .muted{ color: var(--muted); }
+
+    figure{
+      margin:0;
+      border:1px solid var(--border);
+      border-radius: 18px;
+      overflow:hidden;
+      background: rgba(255,255,255,.03);
+    }
+    figure img{ display:block; width:100%; height:auto; }
+    figcaption{
+      padding: 10px 12px;
+      border-top:1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .callout{
+      border:1px solid var(--border);
+      border-left: 4px solid var(--accent2);
+      border-radius: 16px;
+      padding: 12px;
+      background: rgba(167,243,208,.08);
+      color: var(--muted);
+      margin-top: 12px;
+    }
+    .callout strong{ color: var(--text); }
+
+    .footer{ margin: 18px 0 26px; text-align:center; color: var(--muted2); font-size: 12px; }
+    ul{ margin: 8px 0 0 18px; }
+    li{ margin: 6px 0; }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div class="topbar">
+        <div class="brand"><span class="dot"></span> Portfolio case study • Search optimization</div>
+        <div class="cta">
+          <!-- Replace with your real links -->
+          <a class="btn primary" href="https://github.com/refaelcodes-blip/Rendzu" target="_blank" rel="noopener">View on GitHub</a>
+          <a class="btn" href="https://www.upwork.com/freelancers/~016e476d776ad60d2d?viewMode=1" target="_blank" rel="noopener">Hire me on Upwork</a>
+        </div>
+      </div>
+
+      <h1>Rendzu — Five-in-a-Row on a <span style="color:var(--accent)">40×40</span> board</h1>
+      <p class="subtitle">
+        On standard boards you can “think ahead” with brute force a bit. On <strong>40×40</strong>, brute force turns into a bonfire.
+        This project showcases a practical AI: <strong>minimax-family search</strong> + <strong>candidate filtering</strong> +
+        <strong>time-budget cutoffs</strong> to guarantee responsiveness.
+      </p>
+
+      <div class="pills">
+        <div class="pill"><strong>Board:</strong> 40×40</div>
+        <div class="pill"><strong>Goal:</strong> 5 in a row</div>
+        <div class="pill"><strong>AI:</strong> minimax-family</div>
+        <div class="pill"><strong>Key:</strong> weighted candidates</div>
+        <div class="pill"><strong>Timer:</strong> hard cutoff</div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="card">
+        <h2><span class="tag">Client-facing summary</span> What this proves</h2>
+        <ul>
+          <li><strong>Branching control:</strong> only evaluate moves near existing stones (radius 2–4), depending on difficulty.</li>
+          <li><strong>Heuristic scoring:</strong> compute weights for candidate cells and keep only top-N.</li>
+          <li><strong>Difficulty scaling:</strong> adjust radius + candidate count + depth/stop criteria.</li>
+          <li><strong>Guaranteed speed:</strong> timer cutoff → play best-so-far move.</li>
+        </ul>
+
+        <div class="callout">
+          <strong>Hiring note:</strong> I can implement AI opponents, optimize combinatorial search,
+          build heuristic evaluators, and ship clean Windows desktop tooling.
+        </div>
+
+        <p class="muted" style="margin-top:12px;">
+          Full player documentation: <a href="Rendzu-Help.html">Rendzu-Help.html</a>
+        </p>
+      </section>
+
+      <aside class="card">
+      
+      
+
+        <div style="height:12px"></div>
+
+        <figure>
+          <img src="img/blue_win.png" alt="Blue wins example screenshot" loading="lazy">
+          <figcaption>Example: computer builds five in a row.</figcaption>
+        </figure>
+
+        <div class="callout">
+          <strong>Tip:</strong> 2–4 clean screenshots convert better than 20 paragraphs.
+        </div>
+      </aside>
+    </div>
+
+    <div class="footer">
+      Rendzu • Five-in-a-Row • 40×40 • Minimax-family AI • Portfolio page
+    </div>
+  </div>
+</body>
+</html>

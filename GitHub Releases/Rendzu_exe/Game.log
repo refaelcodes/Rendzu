@@ -1,0 +1,99 @@
+﻿  StdAfx.cpp
+  _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+  BaseTypes.cpp
+  Compute.cpp
+C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\BaseTypes.cpp(322,5): warning C4996: '_itoa': This function or variable may be unsafe. Consider using _itoa_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  (compiling source file '/BaseTypes.cpp')
+  
+C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\BaseTypes.cpp(325,5): warning C4996: '_itoa': This function or variable may be unsafe. Consider using _itoa_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  (compiling source file '/BaseTypes.cpp')
+  
+C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\BaseTypes.cpp(372,5): warning C4996: '_itoa': This function or variable may be unsafe. Consider using _itoa_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  (compiling source file '/BaseTypes.cpp')
+  
+C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\BaseTypes.cpp(402,5): warning C4996: '_itoa': This function or variable may be unsafe. Consider using _itoa_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  (compiling source file '/BaseTypes.cpp')
+  
+C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Compute.h(413,11): warning C4244: 'initializing': conversion from '__time64_t' to 'UINT', possible loss of data
+  (compiling source file '/Compute.cpp')
+  
+C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Compute.cpp(663,13): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  (compiling source file '/Compute.cpp')
+  
+C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Compute.cpp(696,13): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  (compiling source file '/Compute.cpp')
+  
+  Game.cpp
+C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Game.cpp(55,2): warning C4996: 'CWinApp::Enable3dControlsStatic': CWinApp::Enable3dControlsStatic is no longer needed. You should remove this call.
+  (compiling source file '/Game.cpp')
+  
+  GameData.cpp
+C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\GameData.cpp(252,10): warning C4244: 'initializing': conversion from '__time64_t' to 'UINT', possible loss of data
+  (compiling source file '/GameData.cpp')
+  
+  GameDoc.cpp
+  GameManager.cpp
+C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Compute.h(413,11): warning C4244: 'initializing': conversion from '__time64_t' to 'UINT', possible loss of data
+  (compiling source file '/GameManager.cpp')
+  
+  GameView.cpp
+  MainFrm.cpp
+  Pattern.cpp
+C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Pattern.cpp(87,20): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file '/Pattern.cpp')
+  
+C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Pattern.cpp(263,13): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  (compiling source file '/Pattern.cpp')
+  
+C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Pattern.cpp(271,3): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _itoa. See online help for details.
+  (compiling source file '/Pattern.cpp')
+  
+C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Pattern.cpp(279,3): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _itoa. See online help for details.
+  (compiling source file '/Pattern.cpp')
+  
+C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Pattern.cpp(280,3): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _itoa. See online help for details.
+  (compiling source file '/Pattern.cpp')
+  
+C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Pattern.cpp(281,3): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _itoa. See online help for details.
+  (compiling source file '/Pattern.cpp')
+  
+  SettingDlg.cpp
+  Shape.cpp
+C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Shape.cpp(254,20): warning C4018: '<=': signed/unsigned mismatch
+  (compiling source file '/Shape.cpp')
+  
+  Shell.cpp
+C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Shell.cpp(1178,13): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  (compiling source file '/Shell.cpp')
+  
+C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Shell.cpp(1692,13): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  (compiling source file '/Shell.cpp')
+  
+  TablesUpdate.cpp
+  Generating Code...
+  Game.vcxproj -> C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Release\Rendzu.exe
+  C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Help\index.html
+  C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Help\README.md
+  C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Help\Rendzu û Help.html
+  C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Help\img\blue_win.png
+  C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Help\img\edit.jpg
+  C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Help\img\help.jpg
+  C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Help\img\last.jpg
+  C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Help\img\level.jpg
+  C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Help\img\load.jpg
+  C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Help\img\machine.jpg
+  C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Help\img\menu.png
+  C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Help\img\new.jpg
+  C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Help\img\next.jpg
+  C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Help\img\owerview.png
+  C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Help\img\prev.jpg
+  C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Help\img\red_win.png
+  C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Help\img\save.jpg
+  C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Help\img\show.jpg
+  C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Help\img\start_pos.jpg
+  19 File(s) copied
+  C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Games\example1.czg
+  C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Games\example2.czg
+  C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Games\example3.czg
+  C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Games\g1.czg
+  4 File(s) copied

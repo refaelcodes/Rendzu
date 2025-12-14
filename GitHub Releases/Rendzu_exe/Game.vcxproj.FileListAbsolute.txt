@@ -1,0 +1,3 @@
+C:\HOME\PROGRAMS\C++\DEV\Rendzu\Release\Rendzu.exe
+C:\HOME\PROGRAMS\C++\DEV\RENDZU_GAME\Rendzu\Release\Rendzu.exe
+C:\HOME\PROGRAMS\C++\RENDZU\Publish\Rendzu\Release\Rendzu.exe

@@ -1,0 +1,84 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Game - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x40d /fo"Debug/Game.res" /d "_DEBUG" "C:\Documents and Settings\raphael\My Documents\My Programs\Tic-Tac-Toe projectes\Tic-Tac-Toe mdf\TicTacToe170905\Game.rc"" 
+Creating temporary file "C:\DOCUME~1\raphael\LOCALS~1\Temp\RSPC9.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /Fr"Debug/" /Fp"Debug/Game.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Documents and Settings\raphael\My Documents\My Programs\Tic-Tac-Toe projectes\Tic-Tac-Toe mdf\TicTacToe170905\BaseTypes.cpp"
+"C:\Documents and Settings\raphael\My Documents\My Programs\Tic-Tac-Toe projectes\Tic-Tac-Toe mdf\TicTacToe170905\Compute.cpp"
+"C:\Documents and Settings\raphael\My Documents\My Programs\Tic-Tac-Toe projectes\Tic-Tac-Toe mdf\TicTacToe170905\Game.cpp"
+"C:\Documents and Settings\raphael\My Documents\My Programs\Tic-Tac-Toe projectes\Tic-Tac-Toe mdf\TicTacToe170905\GameData.cpp"
+"C:\Documents and Settings\raphael\My Documents\My Programs\Tic-Tac-Toe projectes\Tic-Tac-Toe mdf\TicTacToe170905\GameDoc.cpp"
+"C:\Documents and Settings\raphael\My Documents\My Programs\Tic-Tac-Toe projectes\Tic-Tac-Toe mdf\TicTacToe170905\GameManager.cpp"
+"C:\Documents and Settings\raphael\My Documents\My Programs\Tic-Tac-Toe projectes\Tic-Tac-Toe mdf\TicTacToe170905\GameView.cpp"
+"C:\Documents and Settings\raphael\My Documents\My Programs\Tic-Tac-Toe projectes\Tic-Tac-Toe mdf\TicTacToe170905\MainFrm.cpp"
+"C:\Documents and Settings\raphael\My Documents\My Programs\Tic-Tac-Toe projectes\Tic-Tac-Toe mdf\TicTacToe170905\Password.cpp"
+"C:\Documents and Settings\raphael\My Documents\My Programs\Tic-Tac-Toe projectes\Tic-Tac-Toe mdf\TicTacToe170905\Pattern.cpp"
+"C:\Documents and Settings\raphael\My Documents\My Programs\Tic-Tac-Toe projectes\Tic-Tac-Toe mdf\TicTacToe170905\SettingDlg.cpp"
+"C:\Documents and Settings\raphael\My Documents\My Programs\Tic-Tac-Toe projectes\Tic-Tac-Toe mdf\TicTacToe170905\Shape.cpp"
+"C:\Documents and Settings\raphael\My Documents\My Programs\Tic-Tac-Toe projectes\Tic-Tac-Toe mdf\TicTacToe170905\Shell.cpp"
+"C:\Documents and Settings\raphael\My Documents\My Programs\Tic-Tac-Toe projectes\Tic-Tac-Toe mdf\TicTacToe170905\TablesUpdate.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\raphael\LOCALS~1\Temp\RSPC9.tmp" 
+Creating temporary file "C:\DOCUME~1\raphael\LOCALS~1\Temp\RSPCA.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /Fr"Debug/" /Fp"Debug/Game.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Documents and Settings\raphael\My Documents\My Programs\Tic-Tac-Toe projectes\Tic-Tac-Toe mdf\TicTacToe170905\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\raphael\LOCALS~1\Temp\RSPCA.tmp" 
+Creating temporary file "C:\DOCUME~1\raphael\LOCALS~1\Temp\RSPCB.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/Tic-Tac-Toe.pdb" /debug /machine:I386 /out:"Debug/Tic-Tac-Toe.exe" /pdbtype:sept 
+".\Debug\BaseTypes.obj"
+".\Debug\Compute.obj"
+".\Debug\Game.obj"
+".\Debug\GameData.obj"
+".\Debug\GameDoc.obj"
+".\Debug\GameManager.obj"
+".\Debug\GameView.obj"
+".\Debug\MainFrm.obj"
+".\Debug\Password.obj"
+".\Debug\Pattern.obj"
+".\Debug\SettingDlg.obj"
+".\Debug\Shape.obj"
+".\Debug\Shell.obj"
+".\Debug\StdAfx.obj"
+".\Debug\TablesUpdate.obj"
+".\Debug\Game.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\raphael\LOCALS~1\Temp\RSPCB.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+BaseTypes.cpp
+Compute.cpp
+Game.cpp
+GameData.cpp
+GameDoc.cpp
+GameManager.cpp
+GameView.cpp
+MainFrm.cpp
+Password.cpp
+Pattern.cpp
+SettingDlg.cpp
+Shape.cpp
+Shell.cpp
+TablesUpdate.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+Tic-Tac-Toe.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
