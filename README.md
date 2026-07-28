@@ -3,14 +3,12 @@
 Rendzu is a classic **Five-in-a-Row** (Gomoku-style) strategy game: players alternate placing stones, and the first to build an unbroken line of **five** wins (horizontal / vertical / diagonal).
 Unlike common boards (often **15×15**), this project uses a **40×40** board — which makes naive brute-force search unrealistic and forces the AI to be efficient.
 
-## Why this project matters (for clients)
+## Why this project matters
 This repo demonstrates real-world engineering skills:
 - **Game AI**: minimax-family decision search + evaluation function
 - **Search-space control** on a large board (40×40)
 - **Heuristics & scoring**: fast pattern-based weighting of candidate moves
 - **Practical tooling**: save/load, replay navigation, example positions
-
-If you need help with turn-based game AI, heuristic search, optimization, or building Windows desktop tooling — this project is a compact proof.
 
 ## Features
 - Player vs Computer (**Red** = you, **Blue** = computer)
@@ -64,7 +62,7 @@ it searches where it matters, limits options, and guarantees responsiveness.
 ## Download & Run
 ### Option A — Download the latest build (recommended)
 Use GitHub Releases:
-`https://github.com/<YOUR_USER>/<YOUR_REPO>/releases/latest`
+`https://github.com/refaelcodes/Rendzu/releases/latest`
 
 ### Option B — Build from source
 - Requirements: Windows + Visual Studio (adjust if needed)
@@ -75,5 +73,4 @@ Use GitHub Releases:
 ## MIT License
 
 ## Author
-Rafael M. — Software Developer  
-Contact via Upwork: https://www.upwork.com/freelancers/~016e476d776ad60d2dD>
+Rafael M. — Software Developer
